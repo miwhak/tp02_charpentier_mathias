@@ -18,6 +18,17 @@ $app->get('/api/hello/{name}', function (Request $request, Response $response, $
     return $response;
 });
 
+$app->get('/api/catalogue', function (Request $request, Response $response, $args) {
+    $catalogue = '[
+    {"ref":"x1","titre":"linux","prix":10},
+    {"ref":"x2,","titre":"windows","prix":15},
+    {"ref":"x3","titre":"angular","prix":5}
+]';
+    $response->getBody()->write($catalogue );
+    return $response;
+});
+
+
 $options = [
     "attribute" => "token",
     "header" => "Authorization",
