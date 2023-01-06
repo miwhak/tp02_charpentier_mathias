@@ -1,0 +1,67 @@
+<form (ngSubmit)="onSubmit()">
+    <label for="gender">Gender:</label><br>
+    <select id="gender" name="gender"  [(ngModel)]="user.gender" >
+        <option value="Mr">M.</option>
+        <option value="Mme">Mme</option>
+    </select><br>
+  
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"  [(ngModel)]="user.name" (input)="isNameValid()" ><br>
+    <div *ngIf="invalidName">
+        Le nom n'est pas correct.
+    </div>
+  
+    <label for="forname">Forname:</label><br>
+    <input type="text" id="forname" name="forname"  [(ngModel)]="user.forName" (input)="isForNameValid()"><br>
+    <div *ngIf="invalidForName">
+        Le prénom n'est pas correct.
+    </div>
+  
+    <label for="address">Address:</label><br>
+    <input type="text" id="address" name="address"  [(ngModel)]="user.address" ><br>
+  
+    <label for="zip">Zip Code:</label><br>
+    <input type="text" id="zip" name="zip"  [(ngModel)]="user.zip" (input)="isZipValid()"><br>
+    <div *ngIf="invalidZip">
+        Le code postal n'est pas correct.
+    </div>
+  
+    <label for="city">City:</label><br>
+    <input type="text" id="city" name="city"  [(ngModel)]="user.city" (input)="isCityValid()"><br>
+    <div *ngIf="invalidCity">
+        Le nom de la ville n'est pas correct.
+    </div>
+  
+    <label for="country">Country:</label><br>
+    <input type="text" id="country" name="country"  [(ngModel)]="user.country"><br>
+  
+    <label for="phone">Phone Number:</label><br>
+    <input type="text" id="phone" name="phone"  [(ngModel)]="user.phone" (input)="isPhoneNumberValid()"><br>
+    <div *ngIf="invalidPhoneNumber">
+        L'email n'est pas correct.
+    </div>
+  
+  
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"  [(ngModel)]="user.email"(input)="isEmailValid()"><br>
+    <div *ngIf="invalidEmail">
+        L'email n'est pas correct.
+    </div>
+  
+    <label for="login">Login:</label><br>
+    <input type="text" id="login" name="login"  [(ngModel)]="user.login"><br>
+  
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"  [(ngModel)]="user.password"><br>
+  
+    <input type="submit" (click)="isFormFull()" value="Submit">
+  </form> )
+
+  <ng-container *ngIf="info_output">
+    <app-recap 
+    [gender]=user.gender [name]=user.name [forName]=user.forName 
+    [address]=user.address [zip]=user.zip [city]=user.city  [country]=user.country
+    [login]=user.login [phone]=user.phone [email]=user.email>
+    </app-recap>
+</ng-container>
+
